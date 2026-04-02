@@ -1,0 +1,41 @@
+.page { min-height: 100vh; padding-bottom: 40px; }
+
+.header {
+  padding: 52px 20px 24px;
+  background: linear-gradient(180deg, var(--warm) 0%, var(--cream) 100%);
+}
+.greeting      { display: flex; align-items: center; gap: 14px; }
+.greetingEmoji { font-size: 44px; }
+.greetingLine  { font-size: 13px; color: var(--text-light); }
+.greetingName  { font-size: 28px; font-weight: 700; }
+
+.hero { text-align: center; padding: 32px 20px 24px; }
+.heroEmoji { font-size: 52px; margin-bottom: 10px; }
+.heroTitle { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+.heroSub   { font-size: 14px; color: var(--text-mid); }
+
+.actions { padding: 0 16px; display: flex; flex-direction: column; gap: 12px; }
+
+.actionCard {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 16px;
+  background: var(--card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: var(--transition);
+  width: 100%;
+}
+.actionCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--peach); }
+.actionIcon  { font-size: 28px; width: 48px; height: 48px; background: var(--warm); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.actionTitle { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.actionSub   { font-size: 13px; color: var(--text-light); }
+.actionArrow { margin-left: auto; font-size: 18px; color: var(--text-light); }
+
+.fieldLabel { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-light); display: block; margin-bottom: 8px; }
+.emojiGrid  { display: flex; gap: 8px; flex-wrap: wrap; }
+.emojiBtn   { font-size: 22px; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+.emojiBtn:hover   { border-color: var(--peach); transform: scale(1.1); }
+.emojiBtnSel      { border-color: var(--peach); background: var(--warm); }
+.joinHint  { font-size: 14px; color: var(--text-mid); }

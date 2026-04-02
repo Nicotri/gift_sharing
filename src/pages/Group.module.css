@@ -1,0 +1,62 @@
+.page { min-height: 100vh; padding-bottom: 40px; }
+
+.hero {
+  background: linear-gradient(135deg, var(--peach) 0%, var(--rose) 100%);
+  padding: 52px 20px 24px;
+  color: #fff;
+  position: relative;
+}
+.backBtn {
+  position: absolute; top: 16px; left: 16px;
+  font-size: 20px; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.15); border-radius: 10px;
+  padding: 6px 12px; transition: var(--transition);
+}
+.backBtn:hover { background: rgba(255,255,255,.25); }
+
+.inviteBtn {
+  position: absolute; top: 16px; right: 16px;
+  font-size: 13px; font-weight: 700;
+  background: rgba(255,255,255,.2); color: #fff;
+  border-radius: 20px; padding: 7px 14px;
+  border: 1px solid rgba(255,255,255,.3);
+  transition: var(--transition);
+}
+.inviteBtn:hover { background: rgba(255,255,255,.3); }
+
+.heroContent { text-align: center; }
+.groupEmoji  { font-size: 48px; margin-bottom: 8px; }
+.groupName   { font-size: 30px; font-weight: 700; }
+.groupMeta   { font-size: 14px; opacity: .85; margin-top: 4px; }
+
+.section      { padding: 20px 16px; }
+.sectionTitle { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-light); margin-bottom: 12px; }
+
+.memberList   { display: flex; flex-direction: column; gap: 10px; }
+.memberCard   {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 14px; width: 100%;
+  background: var(--card); border-radius: var(--radius-md);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  text-align: left; transition: var(--transition);
+}
+.memberCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.memberAvatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  font-size: 24px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.memberInfo   { flex: 1; min-width: 0; }
+.memberName   { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.memberRole   { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.memberArrow  { font-size: 16px; color: var(--text-light); }
+
+.meBadge {
+  font-size: 11px; font-weight: 700;
+  background: var(--warm-deep); color: var(--text-mid);
+  padding: 2px 8px; border-radius: 20px;
+}
+
+.heroSkeleton { margin: 0; border-radius: 0; }
+.memberSkeleton { margin-bottom: 10px; }

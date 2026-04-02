@@ -1,0 +1,121 @@
+.page { min-height: 100vh; padding-bottom: 60px; background: var(--cream); }
+
+.loadWrap { display: flex; justify-content: center; padding: 80px; }
+
+.topbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 52px 16px 12px;
+  background: var(--card); border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 10;
+}
+.backBtn     { font-size: 20px; color: var(--text-mid); padding: 4px 8px; }
+.topbarTitle { font-size: 16px; font-weight: 700; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.hero {
+  background: var(--warm);
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+.heroEmoji { font-size: 80px; }
+
+.body { padding: 20px 16px; display: flex; flex-direction: column; gap: 20px; }
+
+.titleRow  { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.title     { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.price     { font-size: 22px; font-weight: 700; color: var(--peach); }
+.desc      { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+.authorCard {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--warm); border-radius: var(--radius-md);
+  padding: 14px; border: 1px solid var(--border);
+}
+.authorIcon  { font-size: 24px; }
+.authorLabel { font-size: 12px; color: var(--text-light); margin-bottom: 2px; }
+.authorName  { font-size: 15px; font-weight: 700; }
+
+.section      { background: var(--card); border-radius: var(--radius-md); padding: 16px; border: 1px solid var(--border); }
+.sectionTitle { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-light); margin-bottom: 12px; }
+
+.linksRow { display: flex; flex-wrap: wrap; gap: 8px; }
+.marketLink {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--warm); border: 1px solid var(--border);
+  border-radius: 100px; padding: 7px 14px;
+  font-size: 13px; font-weight: 600; color: var(--text);
+  transition: var(--transition);
+}
+.marketLink:hover { border-color: var(--peach); color: var(--peach); }
+
+.participants { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0; }
+.participantsLabel { font-size: 12px; color: var(--text-light); }
+.participantChip {
+  background: var(--warm); border-radius: 100px;
+  padding: 4px 10px; font-size: 13px; font-weight: 600;
+}
+
+.contribInputRow { display: flex; gap: 8px; margin-top: 12px; }
+.amountInput {
+  flex: 1; padding: 10px 14px;
+  border: 2px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 15px; font-family: var(--font-body); color: var(--text);
+  background: var(--warm); outline: none; transition: border-color .2s;
+}
+.amountInput:focus { border-color: var(--border-focus); }
+
+.blockedNotice {
+  font-size: 14px; font-weight: 600; color: var(--rose);
+  text-align: center; padding: 12px;
+  background: #FDEAE5; border-radius: var(--radius-sm);
+}
+
+/* Reveal section (post-received, inside normal view) */
+.revealSection { background: #F0EAF8; border-color: #D4B8F0; }
+.revealParticipants { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.revealChip {
+  display: flex; align-items: center; gap: 6px;
+  background: #fff; border-radius: 100px;
+  padding: 6px 12px; font-size: 13px; font-weight: 600;
+  border: 1px solid #D4B8F0;
+}
+.revealEmoji { font-size: 16px; }
+.revealTotal { font-size: 14px; font-weight: 700; color: #6A3FAB; }
+
+/* ── FULL REVEAL SCREEN ─────────────────────────────────── */
+.revealPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--peach) 0%, var(--rose) 100%);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 40px 24px;
+  text-align: center; color: #fff;
+}
+.revealEmoji    { font-size: 80px; margin-bottom: 16px; }
+.revealTitle    { font-size: 32px; font-weight: 700; margin-bottom: 6px; }
+.revealGiftName { font-size: 18px; opacity: .9; margin-bottom: 32px; }
+
+.revealCard {
+  width: 100%; max-width: 320px;
+  background: rgba(255,255,255,.2);
+  border-radius: var(--radius-lg);
+  padding: 24px; margin-bottom: 28px;
+  border: 1px solid rgba(255,255,255,.3);
+}
+.revealCardTitle { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; opacity: .8; margin-bottom: 14px; }
+.revealNames { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 16px; }
+.revealName {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.25); border-radius: 100px;
+  padding: 7px 14px; font-size: 14px; font-weight: 600;
+}
+.revealAmount { font-size: 24px; font-weight: 700; }
+
+.revealBackBtn {
+  background: rgba(255,255,255,.25); color: #fff;
+  border-radius: var(--radius-md); padding: 16px 40px;
+  font-size: 16px; font-weight: 700;
+  font-family: var(--font-body);
+  border: 1px solid rgba(255,255,255,.35);
+  transition: var(--transition);
+}
+.revealBackBtn:hover { background: rgba(255,255,255,.35); }
