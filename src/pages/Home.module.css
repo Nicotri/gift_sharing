@@ -1,38 +1,142 @@
-.page { min-height: 100vh; padding-bottom: 40px; }
+.page { min-height: 100vh; padding-bottom: 100px; }
 
+/* ── HEADER ── */
 .header {
-  padding: 52px 20px 24px;
-  background: linear-gradient(180deg, var(--warm) 0%, var(--cream) 100%);
+  background: linear-gradient(160deg, var(--warm) 0%, var(--cream) 100%);
+  padding: 52px 20px 20px;
+  border-bottom: 1px solid var(--border);
 }
-.greeting      { display: flex; align-items: center; gap: 14px; }
-.greetingEmoji { font-size: 44px; }
-.greetingLine  { font-size: 13px; color: var(--text-light); }
-.greetingName  { font-size: 28px; font-weight: 700; }
+.headerInner  { display: flex; align-items: center; justify-content: space-between; }
+.greeting     { display: flex; align-items: center; gap: 12px; }
+.greetingEmoji{ font-size: 40px; }
+.greetingLine { font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: .06em; }
+.greetingName { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.appLogo      { font-size: 32px; }
 
-.hero { text-align: center; padding: 32px 20px 24px; }
-.heroEmoji { font-size: 52px; margin-bottom: 10px; }
-.heroTitle { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
-.heroSub   { font-size: 14px; color: var(--text-mid); }
+/* ── CONTENT ── */
+.content { padding: 0 0 20px; }
 
-.actions { padding: 0 16px; display: flex; flex-direction: column; gap: 12px; }
+/* ── SECTIONS ── */
+.section       { padding: 20px 16px 4px; }
+.sectionHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.sectionTitle  { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-light); margin-bottom: 12px; }
+.sectionLink   { font-size: 13px; font-weight: 600; color: var(--peach); background: none; border: none; cursor: pointer; }
 
-.actionCard {
+/* ── EMPTY STATE ── */
+.emptyCard  {
+  background: var(--warm); border-radius: var(--radius-md);
+  border: 1px dashed var(--border); padding: 24px;
+  text-align: center;
+}
+.emptyIcon  { font-size: 28px; margin-bottom: 8px; }
+.emptyText  { font-size: 13px; color: var(--text-light); }
+
+/* ── MY WISHLIST CARD ── */
+.myWishlistCard {
   display: flex; align-items: center; gap: 14px;
-  padding: 18px 16px;
-  background: var(--card);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  text-align: left;
-  transition: var(--transition);
-  width: 100%;
+  background: linear-gradient(135deg, var(--peach) 0%, var(--rose) 100%);
+  border-radius: var(--radius-md); padding: 16px;
+  cursor: pointer; transition: var(--transition);
+  border: none; width: 100%; text-align: left;
+  box-shadow: 0 4px 16px rgba(240,144,80,.3);
 }
-.actionCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--peach); }
-.actionIcon  { font-size: 28px; width: 48px; height: 48px; background: var(--warm); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.actionTitle { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
-.actionSub   { font-size: 13px; color: var(--text-light); }
-.actionArrow { margin-left: auto; font-size: 18px; color: var(--text-light); }
+.myWishlistCard:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,144,80,.4); }
+.myWishlistLeft  { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.myWishlistEmoji { font-size: 36px; }
+.myWishlistName  { font-size: 16px; font-weight: 700; color: #fff; }
+.myWishlistCount { font-size: 13px; color: rgba(255,255,255,.8); margin-top: 2px; }
+.myWishlistPreviews { display: flex; gap: 4px; align-items: center; }
+.previewEmoji { font-size: 20px; }
+.previewMore  { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.8); background: rgba(255,255,255,.2); border-radius: 10px; padding: 2px 6px; }
+.cardArrow    { font-size: 16px; color: rgba(255,255,255,.7); flex-shrink: 0; }
 
+/* ── MEMBER GRID ── */
+.memberGrid { display: flex; flex-direction: column; gap: 10px; }
+.memberCard {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border-radius: var(--radius-md);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  padding: 14px 12px; cursor: pointer; text-align: left;
+  transition: var(--transition); width: 100%;
+}
+.memberCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--peach); }
+.memberAvatar { width: 44px; height: 44px; border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.memberInfo   { flex: 1; min-width: 0; }
+.memberName   { font-size: 15px; font-weight: 700; }
+.memberGroup  { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.memberCard .cardArrow { color: var(--text-light); }
+
+/* ── COMMITMENTS ── */
+.commitList { display: flex; flex-direction: column; gap: 10px; }
+.commitCard {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border-radius: var(--radius-md);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  padding: 12px; cursor: pointer; text-align: left;
+  transition: var(--transition); width: 100%;
+}
+.commitCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.commitEmoji  { font-size: 28px; width: 44px; height: 44px; background: var(--warm); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.commitInfo   { flex: 1; min-width: 0; }
+.commitTitle  { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.commitMeta   { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.commitRight  { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.commitPrice  { font-size: 13px; font-weight: 700; color: var(--peach); }
+
+/* ── GROUPS LIST ── */
+.groupList { display: flex; flex-direction: column; gap: 10px; }
+.groupCard {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border-radius: var(--radius-md);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  padding: 14px 12px; cursor: pointer; text-align: left;
+  transition: var(--transition); width: 100%;
+}
+.groupCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.groupEmoji { font-size: 28px; width: 44px; height: 44px; background: var(--warm); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.groupInfo  { flex: 1; min-width: 0; }
+.groupName  { font-size: 15px; font-weight: 700; }
+.groupMeta  { font-size: 12px; color: var(--text-light); margin-top: 2px; display: flex; align-items: center; gap: 6px; }
+.groupCard .cardArrow { color: var(--text-light); }
+.adminBadge { background: var(--warm-deep); color: var(--text-mid); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+
+/* ── FAB ── */
+.fabWrap {
+  position: fixed; bottom: 28px; right: 20px;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  z-index: 150;
+}
+.fab {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--peach); color: #fff;
+  font-size: 28px; font-weight: 300; line-height: 1;
+  box-shadow: 0 4px 20px rgba(240,144,80,.45);
+  transition: var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.fab:hover  { background: var(--peach-dark); transform: scale(1.08); }
+.fabOpen    { background: var(--text); transform: rotate(45deg); }
+.fabOpen:hover { background: var(--text-mid); }
+
+.fabMenu { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.fabMenuItem {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--card); border-radius: var(--radius-md);
+  border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  padding: 12px 16px; font-size: 14px; font-weight: 600; color: var(--text);
+  white-space: nowrap; cursor: pointer; transition: var(--transition);
+}
+.fabMenuItem:hover { border-color: var(--peach); color: var(--peach); }
+.fabMenuIcon { font-size: 18px; }
+
+.fabBackdrop {
+  position: fixed; inset: 0; z-index: 140;
+  background: rgba(42,31,15,.15);
+  backdrop-filter: blur(2px);
+  animation: fadeIn .15s ease;
+}
+
+/* ── MODALS ── */
 .fieldLabel { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-light); display: block; margin-bottom: 8px; }
 .emojiGrid  { display: flex; gap: 8px; flex-wrap: wrap; }
 .emojiBtn   { font-size: 22px; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
