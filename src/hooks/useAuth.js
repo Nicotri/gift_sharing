@@ -9,14 +9,12 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Restore existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
       if (session?.user) fetchProfile(session.user.id)
       else setLoading(false)
     })
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
       if (session?.user) fetchProfile(session.user.id)
@@ -27,22 +25,48 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function fetchProfile(userId) {
-    const { data } = await supabase
+    // Use maybeSingle() instead of single() — returns null instead of 406 when no row
+    const { data, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
-      .single()
-    setProfile(data)
+      .maybeSingle()
+
+    if (error) {
+      console.error('fetchProfile error:', error)
+      setLoading(false)
+      return
+    }
+
+    if (data) {
+      setProfile(data)
+    } else {
+      // Profile row missing — create it now (fallback for anonymous users)
+      const { data: created } = await supabase
+        .from('profiles')
+        .insert({ id: userId, display_name: 'Membre', emoji: '🙂' })
+        .select()
+        .single()
+      setProfile(created)
+    }
     setLoading(false)
   }
 
-  // Called from onboarding — signs in anonymously then creates/updates profile
   async function signInAnonymously({ displayName, emoji }) {
     setLoading(true)
     const { data, error } = await supabase.auth.signInAnonymously({
       options: { data: { display_name: displayName, emoji } }
     })
     if (error) { setLoading(false); throw error }
+
+    // Upsert profile immediately — don't rely solely on the trigger
+    await supabase
+      .from('profiles')
+      .upsert(
+        { id: data.user.id, display_name: displayName, emoji },
+        { onConflict: 'id' }
+      )
+
     return data.user
   }
 
