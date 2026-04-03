@@ -12,11 +12,13 @@ export function useGroup(groupId) {
   const fetchGroup = useCallback(async () => {
     if (!groupId || !user) return
     setLoading(true)
+
     const { data: g, error: ge } = await supabase
       .from('groups')
       .select('*')
       .eq('id', groupId)
-      .single()
+      .maybeSingle()
+
     if (ge) { setError(ge.message); setLoading(false); return }
     setGroup(g)
 
@@ -24,6 +26,7 @@ export function useGroup(groupId) {
       .from('group_members')
       .select('*, profiles(*)')
       .eq('group_id', groupId)
+
     setMembers(m || [])
     setLoading(false)
   }, [groupId, user])
@@ -43,24 +46,28 @@ export function useGroup(groupId) {
     return () => supabase.removeChannel(channel)
   }, [groupId, fetchGroup])
 
+  // Use the SECURITY DEFINER function — avoids RLS issues for anonymous users
   async function createGroup({ name, emoji }) {
     const { data, error } = await supabase
-      .from('groups')
-      .insert({ name, emoji, created_by: user.id })
-      .select()
-      .single()
+      .rpc('create_group', { p_name: name, p_emoji: emoji })
+
     if (error) throw error
-    // Auto-add creator as admin member
-    await supabase.from('group_members').insert({
-      group_id: data.id, user_id: user.id, role: 'admin'
-    })
-    return data
+
+    // Fetch the full group row to return it
+    const { data: group } = await supabase
+      .from('groups')
+      .select('*')
+      .eq('id', data)
+      .single()
+
+    return group
   }
 
   async function joinGroup(inviteCode) {
-    const { data, error } = await supabase.rpc('join_group_by_code', { code: inviteCode })
+    const { data, error } = await supabase
+      .rpc('join_group_by_code', { code: inviteCode })
     if (error) throw error
-    return data // returns group id
+    return data
   }
 
   return { group, members, loading, error, createGroup, joinGroup, refetch: fetchGroup }
